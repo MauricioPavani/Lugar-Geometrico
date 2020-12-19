@@ -40,6 +40,8 @@ def deslocaEixo(curva, novaRef):
 		novaCurva = novaCurva + [aux]
 	return novaCurva
 
+def buscaPontoRandom(pontos):
+	return r.randint(0,len(pontos))
 
 def nuvemPontos(pontosX, pontosY, color='blue'):
 	# plt.plot(pontosX, pontosY)
@@ -73,5 +75,4 @@ def plotPnL(pontosX, pontosY, titulo=''):
 # n_x = [formatText(num) for num in x]
 # n_y = [formatText(num) for num in y]
 
-#plotPnL(n_x, n_y)
-
+# plotPnL(n_x, n_y)
