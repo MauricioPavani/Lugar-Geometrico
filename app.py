@@ -30,20 +30,16 @@ def formatText(text):
 	
 	return float(text)
 
-	# if 'E' in text:
-	# 	text = text.split('E')
-	# elif 'e' in text:
-	# 	text = text.split('e')
 
-	# test = []
+def deslocaEixo(curva, novaRef):
+	novaCurva = []
+	for ponto in vetor:
+		aux = []
+		aux = aux + [ponto[0] - novaRef[0]]
+		aux = aux + [ponto[1] - novaRef[1]]
+		novaCurva = novaCurva + [aux]
+	return novaCurva
 
-	# if type(text) == type(test):
-	# 	if '-' in text[1]:
-	# 		return float(text[0]) / ( 10**float(text[1].replace('-', '')) )
-	# 	else:
-	# 		return float(text[0]) * ( 10**float(text[1]) )
-	# else:
-	# 	return float(text)
 
 def nuvemPontos(pontosX, pontosY, color='blue'):
 	# plt.plot(pontosX, pontosY)
@@ -60,21 +56,22 @@ def plotPnL(pontosX, pontosY, titulo=''):
 	plt.show()
 	# plt.savefig('test.png')
 
-arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt', 'r')
-x = arquivo.read()
-arquivo.close()
-x = x.split('\n')
-if x[-1] == '':
-	x.pop()
+# arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt', 'r')
+# x = arquivo.read()
+# arquivo.close()
+# x = x.split('\n')
+# if x[-1] == '':
+# 	x.pop()
 
-arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt', 'r')
-y = arquivo.read()
-arquivo.close()
-y = y.split('\n')
-if y[-1] == '':
-	y.pop()
+# arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt', 'r')
+# y = arquivo.read()
+# arquivo.close()
+# y = y.split('\n')
+# if y[-1] == '':
+# 	y.pop()
 
-n_x = [formatText(num) for num in x]
-n_y = [formatText(num) for num in y]
+# n_x = [formatText(num) for num in x]
+# n_y = [formatText(num) for num in y]
 
-plotPnL(n_x, n_y)
+#plotPnL(n_x, n_y)
+
