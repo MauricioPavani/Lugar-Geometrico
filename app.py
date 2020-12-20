@@ -86,16 +86,6 @@ def calculaMaiorAngulo(vetorPontos, ref):
 	return indice
 
 
-def buscaMenorR(vetorPontos):
-	menorR = vetorPontos[0][0]
-	indice = 0
-	for i in range(0, len(vetorPontos)):
-		if vetorPontos[i][0] < menorR:
-			indice = i
-			menorR = vetorPontos[i][0]
-
-	return indice
-
 def verificaRepeticao(vetorPontos, ponto):
 	for x in vetorPontos:
 		if x == ponto:
