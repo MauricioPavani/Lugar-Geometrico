@@ -33,15 +33,16 @@ def formatText(text):
 
 def deslocaEixo(curva, novaRef):
 	novaCurva = []
-	for ponto in vetor:
+	for ponto in curva:
 		aux = []
 		aux = aux + [ponto[0] - novaRef[0]]
 		aux = aux + [ponto[1] - novaRef[1]]
 		novaCurva = novaCurva + [aux]
+
 	return novaCurva
 
 def buscaPontoRandom(pontos):
-	return r.randint(0,len(pontos))
+	return r.randint(0,len(pontos)-1)
 
 def calculaMenorAngulo(vetorPontos):
 	angulos = []
@@ -55,6 +56,7 @@ def calculaMenorAngulo(vetorPontos):
 	angulo = 1000
 	for i in range(0, len(angulos)):
 		if angulos[i] < angulo:
+			angulo = angulos[i]
 			indice = i
 
 	return indice
@@ -75,6 +77,17 @@ def calculaMaiorAngulo(vetorPontos, ref):
 
 	return indice
 
+def pnl(vetorPontos):
+	vertices = []
+	pontoAleatorio = buscaPontoRandom(vetorPontos)
+	vertices = vertices + [calculaMenorAngulo(deslocaEixo(vetorPontos, vetorPontos[pontoAleatorio]))]
+	
+
+	# plt.scatter(vetorPontos[pontoAleatorio][0], vetorPontos[pontoAleatorio][1], marker="o", color="red")
+	# plt.scatter(vetorPontos[vertices[0]][0], vetorPontos[vertices[0]][1], marker="o", color="black")
+
+
+
 def nuvemPontos(pontosX, pontosY, color='blue'):
 	# plt.plot(pontosX, pontosY)
 	plt.scatter(pontosX, pontosY, marker="x", color=color)
@@ -86,25 +99,37 @@ def plotPnL(pontosX, pontosY, titulo=''):
 	plt.title('titulo')
 	plt.xlabel('G(S)')
 	plt.ylabel('B(S)')
-
+	pnl(formata(pontosX, pontosY))
 	plt.show()
 	# plt.savefig('test.png')
 
-# arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt', 'r')
-# x = arquivo.read()
-# arquivo.close()
-# x = x.split('\n')
-# if x[-1] == '':
-# 	x.pop()
+def formata(pontosX, pontosY):
+	vetor = []
+	for i in range(0, len(pontosX)):
+		aux = []
+		aux = aux + [pontosX[i]]
+		aux = aux + [pontosY[i]]
+		vetor = vetor + [aux]
 
-# arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt', 'r')
-# y = arquivo.read()
-# arquivo.close()
-# y = y.split('\n')
-# if y[-1] == '':
-# 	y.pop()
+	return vetor
 
-# n_x = [formatText(num) for num in x]
-# n_y = [formatText(num) for num in y]
 
-# plotPnL(n_x, n_y)
+arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt', 'r')
+x = arquivo.read()
+arquivo.close()
+x = x.split('\n')
+if x[-1] == '':
+	x.pop()
+
+arquivo = open('/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt', 'r')
+y = arquivo.read()
+arquivo.close()
+y = y.split('\n')
+if y[-1] == '':
+	y.pop()
+
+n_x = [formatText(num) for num in x]
+n_y = [formatText(num) for num in y]
+
+plotPnL(n_x, n_y)
+
