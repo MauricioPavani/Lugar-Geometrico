@@ -43,6 +43,22 @@ def deslocaEixo(curva, novaRef):
 def buscaPontoRandom(pontos):
 	return r.randint(0,len(pontos))
 
+def calculaMenorAngulo(vetorPontos):
+	angulos = []
+	for ponto in vetorPontos:
+		if not(ponto[0] == 0 and ponto[1] == 0):
+			angulos = angulos + [anguloEntreVetores([abs(ponto[0]), abs(ponto[1])], [1, 0])]
+		else:
+			angulos = angulos + [1000]
+
+	indice = 0
+	angulo = 1000
+	for i in range(0, len(angulos)):
+		if angulos[i] < angulo:
+			indice = i
+
+	return indice
+
 def nuvemPontos(pontosX, pontosY, color='blue'):
 	# plt.plot(pontosX, pontosY)
 	plt.scatter(pontosX, pontosY, marker="x", color=color)
