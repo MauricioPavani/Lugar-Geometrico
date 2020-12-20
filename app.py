@@ -54,8 +54,10 @@ def calculaMenorAngulo(vetorPontos):
 	angulos = []
 	for ponto in vetorPontos:
 		if not(ponto[0] == 0 and ponto[1] == 0):
+			# Foi utilizado o 'abs' porque o objetivo é caracterizar os ângulos apenas com valores entre 0 e 90°, 1º quadrante
 			angulos = angulos + [anguloEntreVetores([abs(ponto[0]), abs(ponto[1])], [1, 0])]
 		else:
+			# Para ignorar o ponto da origem
 			angulos = angulos + [1000]
 
 	indice = 0
@@ -74,6 +76,7 @@ def calculaMaiorAngulo(vetorPontos, ref):
 		if not(ponto[0] == 0 and ponto[1] == 0):
 			angulos = angulos + [anguloEntreVetores(ponto, ref)]
 		else:
+			# Para ignorar o ponto da origem
 			angulos = angulos + [0]
 
 	indice = 0
@@ -107,28 +110,31 @@ def pnl(vetorPontos):
 	while True:
 		novoVetorPontos = deslocaEixo(vetorPontos, vetorPontos[vertices[i]])
 		novoIndice = calculaMaiorAngulo(novoVetorPontos, novoVetorPontos[vertices[i-1]])
+		# Verifica se o novo vertice já existe na lista de vértices do polígono, caso exista, polígono já está pronto
 		if verificaRepeticao(vertices, novoIndice):
 			break
 		vertices = vertices + [novoIndice]
 		i = i + 1
 
 	for x in vertices:
+		# Elimina os pontos que estão antes do primeiro vértice repetido e não fazem parte do polígono
 		if x == novoIndice:
 			break
 		vertices = vertices[1:]
 
 	pontosVertice = []
 	for x in vertices:
+		# Converte os vértices em valores de x e y
 		pontosVertice = pontosVertice + [vetorPontos[x]] 
 
+	# Fecha o ciclo do polígono
 	pontosVertice = pontosVertice + [pontosVertice[0]]
 	return pontosVertice
 
 
 def nuvemPontos(pontosX, pontosY, color='blue'):
-	# plt.plot(pontosX, pontosY)
+	# Plota apenas os pontos, sem unir eles
 	plt.scatter(pontosX, pontosY, marker="x", color=color)
-	# plt.show()
 
 
 def plotPnL(pontosX, pontosY, titulo=''):
