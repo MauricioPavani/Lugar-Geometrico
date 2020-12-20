@@ -59,6 +59,22 @@ def calculaMenorAngulo(vetorPontos):
 
 	return indice
 
+def calculaMaiorAngulo(vetorPontos, ref):
+	angulos = []
+	for ponto in vetorPontos:
+		if not(ponto[0] == 0 and ponto[1] == 0):
+			angulos = angulos + [anguloEntreVetores(ponto, ref)]
+		else:
+			angulos = angulos + [0]
+
+	indice = 0
+	angulo = 0
+	for i in range(0, len(angulos)):
+		if angulos[i] > angulo:
+			indice = i
+
+	return indice
+
 def nuvemPontos(pontosX, pontosY, color='blue'):
 	# plt.plot(pontosX, pontosY)
 	plt.scatter(pontosX, pontosY, marker="x", color=color)
