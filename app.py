@@ -45,8 +45,10 @@ def deslocaEixo(curva, novaRef):
 
 	return novaCurva
 
+
 def buscaPontoRandom(pontos):
 	return r.randint(0,len(pontos)-1)
+
 
 def calculaMenorAngulo(vetorPontos):
 	angulos = []
@@ -65,6 +67,7 @@ def calculaMenorAngulo(vetorPontos):
 
 	return indice
 
+
 def calculaMaiorAngulo(vetorPontos, ref):
 	angulos = []
 	for ponto in vetorPontos:
@@ -82,6 +85,7 @@ def calculaMaiorAngulo(vetorPontos, ref):
 
 	return indice
 
+
 def buscaMenorR(vetorPontos):
 	menorR = vetorPontos[0][0]
 	indice = 0
@@ -91,6 +95,11 @@ def buscaMenorR(vetorPontos):
 			menorR = vetorPontos[i][0]
 
 	return indice
+
+def verificaRepeticao(vetorPontos, ponto):
+	for x in vetorPontos:
+		if x == ponto:
+			return True
 
 def pnl(vetorPontos):
 	vertices = []
@@ -105,38 +114,25 @@ def pnl(vetorPontos):
 	plt.scatter(vetorPontos[vertices[1]][0], vetorPontos[vertices[1]][1], marker="o", color="green")
 
 	i = 1
-	while vertices[i] != vertices[0] and i < 100:
-		print(i)
+	while True:
 		novoVetorPontos = deslocaEixo(vetorPontos, vetorPontos[vertices[i]])
-		vertices = vertices + [calculaMaiorAngulo(novoVetorPontos, novoVetorPontos[vertices[i-1]])]
+		novoIndice = calculaMaiorAngulo(novoVetorPontos, novoVetorPontos[vertices[i-1]])
+		if verificaRepeticao(vertices, novoIndice):
+			break
+		vertices = vertices + [novoIndice]
 		i = i + 1
 
-
-	novosVertices = set()
 	for x in vertices:
-		novosVertices.add(x)
+		if x == novoIndice:
+			break
+		vertices = vertices[1:]
 
-	poligono = []
-	for x in novosVertices:
-		poligono = poligono + [vetorPontos[x]]
+	pontosVertice = []
+	for x in vertices:
+		pontosVertice = pontosVertice + [vetorPontos[x]] 
 
-	vertices = []
-	pontoAleatorio = buscaPontoRandom(poligono)
-	vertices = vertices + [calculaMenorAngulo(deslocaEixo(poligono, poligono[pontoAleatorio]))]
-
-	novoVetorPontos = deslocaEixo(poligono, poligono[vertices[0]])
-	vertices = vertices + [calculaMaiorAngulo(novoVetorPontos, novoVetorPontos[pontoAleatorio])]
-
-	i = 1
-	while vertices[i] != vertices[0] and i < 100:
-		print(i)
-		novoVetorPontos = deslocaEixo(poligono, poligono[vertices[i]])
-		vertices = vertices + [calculaMaiorAngulo(novoVetorPontos, novoVetorPontos[vertices[i-1]])]
-		i = i + 1
-
-	return vertices
-
-	
+	pontosVertice = pontosVertice + [pontosVertice[0]]
+	return pontosVertice
 
 
 def nuvemPontos(pontosX, pontosY, color='blue'):
@@ -144,16 +140,27 @@ def nuvemPontos(pontosX, pontosY, color='blue'):
 	plt.scatter(pontosX, pontosY, marker="x", color=color)
 	# plt.show()
 
+
 def plotPnL(pontosX, pontosY, titulo=''):
 	nuvemPontos(pontosX, pontosY)
 	
 	plt.title(titulo)
 	plt.xlabel('G(S)')
 	plt.ylabel('B(S)')
-	vertices = pnl(formata(pontosX, pontosY))
+
+	verticeX = []
+	verticeY = []
+	pontosVertice = pnl(formata(pontosX, pontosY))
+
+	for x in pontosVertice:
+		verticeX = verticeX + [x[0]]
+		verticeY = verticeY + [x[1]]
+
+	plt.plot(verticeX, verticeY, marker="x", color="gray")
 
 	plt.show()
 	# plt.savefig('test.png')
+
 
 def formata(pontosX, pontosY):
 	vetor = []
@@ -164,6 +171,7 @@ def formata(pontosX, pontosY):
 		vetor = vetor + [aux]
 
 	return vetor
+
 
 def main(TextoX, TextoY):
 	arquivo = open(TextoX, 'r')
@@ -183,7 +191,7 @@ def main(TextoX, TextoY):
 	n_x = [formatText(num) for num in x]
 	n_y = [formatText(num) for num in y]
 
-	plotPnL(n_x, n_y)
+	plotPnL(n_x, n_y, "Polígono de n Lados")
 
 
 
