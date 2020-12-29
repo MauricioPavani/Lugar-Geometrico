@@ -16,5 +16,7 @@ O algoritmo utiliza as adimitância (ou impedâncias) na forma retangular, de fo
 Tanto os arquivos que o algoritmo irá ler, quanto os que ele irá salvar, devem possuir a extensão ".txt".  
 
 ## Com relação à imagem exportada  
-O algoritmo exporta um imagem chamada pnl.png para a pasta onde o código foi salvo. Essa imagem é uma cópia do polígono de "n" lados criado pelo algoritmo.  
+O algoritmo exporta automaticamente uma imagem chamada pnl.png para a pasta onde o código foi salvo. Essa imagem é uma cópia do polígono de "n" lados criado pelo algoritmo.  
 
+## Com relação ao arquivo exportado  
+O algoritmo exporta automaticamente um arquivo chamado Vertices.txt para a pasta onde o código foi salvo. Esse arquivo contém os vértices, como par ordenado, que compõem a involtória do polígono de "n" lados criado pelo algoritmo.
