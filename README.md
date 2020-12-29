@@ -24,8 +24,9 @@ O algoritmo exporta automaticamente um arquivo chamado Vertices.txt para a pasta
 ## Como utilizar o algoritmo  
 Para utilizar o algoritmo é necessário indicar para ele quais os arquivos que contêm os valores das partes real e imaginária da adimitância/impedâncias que compõem a nuvem de pontos. Existem duas possibilidades para fazer isso: a primeira é passar o caminho de cada um dos arquivos como parâmetro durante a execução do código, vide o exemplo a seguir; a segunda forma é, caso os caminhos não sejam passados como parâmetro, fornecer para o algoritmo durante a execução, ele irá solicitar automaticamente.  
 
-'''
+```
 python3 app.py x.txt y.txt
-'''  
+
+``` 
 
 **IMPORTANTE:** Ao passar os caminhos como parâmetros é necessário inserir primeiro o arquivo que contém a parte real e, em seguida, o que contém a parte imaginária.
