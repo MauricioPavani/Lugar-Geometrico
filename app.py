@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import random as r
 import math
 import numpy as np
+import sys
 
 def norma(ponto):
 	return (ponto[0]**2 + ponto[1]**2)**0.5
@@ -191,6 +192,19 @@ def main(TextoX, TextoY):
 
 
 
-TextoX = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt'
-TextoY = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt'
-main(TextoX, TextoY)
+# TextoX = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt'
+# TextoY = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt'
+# main(TextoX, TextoY)
+
+if __name__ == "__main__":
+	parametros = sys.argv[1:]
+	if len(parametros) >= 2:
+		TextoX = parametros[0]
+		TextoY = parametros[1]
+		main(TextoX, TextoY)
+	else:
+		print("Entre com o caminho referente aos valores do eixo X: ")
+		TextoX = input()
+		print("Entre com o caminho referente aos valores do eixo Y: ")
+		TextoY = input()
+		main(TextoX, TextoY)
