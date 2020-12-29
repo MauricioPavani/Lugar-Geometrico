@@ -95,6 +95,13 @@ def verificaRepeticao(vetorPontos, ponto):
 		if x == ponto:
 			return True
 
+def salvaVertices(vetorPontos):
+	arquivo = open("Vertices.txt", 'w')
+	for ponto in vetorPontos:
+		arquivo.write(str(ponto) + "\n")
+	arquivo.close()
+
+
 def pnl(vetorPontos):
 	vertices = []
 	pontoAleatorio = buscaPontoRandom(vetorPontos)
@@ -130,6 +137,7 @@ def pnl(vetorPontos):
 
 	# Fecha o ciclo do polígono
 	pontosVertice = pontosVertice + [pontosVertice[0]]
+	salvaVertices(pontosVertice)
 	return pontosVertice
 
 
