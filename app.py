@@ -95,6 +95,7 @@ def verificaRepeticao(vetorPontos, ponto):
 		if x == ponto:
 			return True
 
+
 def salvaVertices(vetorPontos):
 	arquivo = open("Vertices.txt", 'w')
 	for ponto in vetorPontos:
@@ -167,7 +168,6 @@ def plotPnL(pontosX, pontosY, titulo=''):
 	plt.show()
 	
 
-
 def formata(pontosX, pontosY):
 	vetor = []
 	for i in range(0, len(pontosX)):
@@ -200,10 +200,6 @@ def main(TextoX, TextoY):
 	plotPnL(n_x, n_y, "Polígono de n Lados")
 
 
-
-# TextoX = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/x.txt'
-# TextoY = '/home/mauricio/Documentos/MEGA/Projeto Lugar Geométrico/0/y.txt'
-# main(TextoX, TextoY)
 
 if __name__ == "__main__":
 	parametros = sys.argv[1:]
