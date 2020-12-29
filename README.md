@@ -19,4 +19,13 @@ Tanto os arquivos que o algoritmo irá ler, quanto os que ele irá salvar, devem
 O algoritmo exporta automaticamente uma imagem chamada pnl.png para a pasta onde o código foi salvo. Essa imagem é uma cópia do polígono de "n" lados criado pelo algoritmo.  
 
 ## Com relação ao arquivo exportado  
-O algoritmo exporta automaticamente um arquivo chamado Vertices.txt para a pasta onde o código foi salvo. Esse arquivo contém os vértices, como par ordenado, que compõem a envoltória do polígono de "n" lados criado pelo algoritmo.
+O algoritmo exporta automaticamente um arquivo chamado Vertices.txt para a pasta onde o código foi salvo. Esse arquivo contém os vértices, como par ordenado, que compõem a envoltória do polígono de "n" lados criado pelo algoritmo.  
+
+## Como utilizar o algoritmo  
+Para utilizar o algoritmo é necessário indicar para ele quais os arquivos que contêm os valores das partes real e imaginária da adimitância/impedâncias que compõem a nuvem de pontos. Existem duas possibilidades para fazer isso: a primeira é passar o caminho de cada um dos arquivos como parâmetro durante a execução do código, vide o exemplo a seguir; a segunda forma é, caso os caminhos não sejam passados como parâmetro, fornecer para o algoritmo durante a execução, ele irá solicitar automaticamente.  
+
+'''
+python3 app.py x.txt y.txt
+'''  
+
+**IMPORTANTE:** Ao passar os caminhos como parâmetros é necessário inserir primeiro o arquivo que contém a parte real e, em seguida, o que contém a parte imaginária.
