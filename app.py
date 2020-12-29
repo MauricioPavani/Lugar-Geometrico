@@ -155,8 +155,9 @@ def plotPnL(pontosX, pontosY, titulo=''):
 
 	plt.plot(verticeX, verticeY, marker="x", color="gray")
 
+	plt.savefig('pnl.png')
 	plt.show()
-	# plt.savefig('test.png')
+	
 
 
 def formata(pontosX, pontosY):
