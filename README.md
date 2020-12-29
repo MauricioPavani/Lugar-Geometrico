@@ -10,4 +10,7 @@ O algoritmo para elaborar este código foi removido da referência:
 
 ## Como montar os arquivos que o código irá ler  
 O algoritmo utiliza as adimitância (ou impedâncias) na forma retangular, de forma que é necessário salvar os valores relacionados a parte real e imaginária em arquivos sepadaros. Os valores devem ser salvos de maneira sequencial no arquivo, com um valor por linha.  
-**IMPORTANTE:** Os valores relacionados a parte real e imaginária da adimitância/impedâncias devem ocupar as mesmas posições em seus respectivos arquivos para que o algoritmo opere corretamente.
+**IMPORTANTE:** Os valores relacionados a parte real e imaginária da adimitância/impedâncias devem ocupar as mesmas posições em seus respectivos arquivos para que o algoritmo opere corretamente.  
+
+## Com relação a extensão dos arquivos  
+Tanto os arquivos que o algoritmo irá ler, quanto os que ele irá salvar, devem possuir a extensão ".txt".  
